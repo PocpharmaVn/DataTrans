@@ -13,7 +13,7 @@ CREATE TABLE poc_dwh.dim_country
 	, CurrencyCode STRING
 	, CultureFormat STRING
   )
-  PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
+ PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
   
 CREATE TABLE poc_dwh.dim_city 
   ( 
@@ -53,7 +53,7 @@ CREATE TABLE poc_dwh.dim_city
   )
   PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
   
-    CREATE TABLE poc_dwh.dim_pharmacy_address 
+  CREATE TABLE poc_dwh.dim_pharmacy_address 
   ( 
 	Id INT64
     ,PharmacyId INT64
