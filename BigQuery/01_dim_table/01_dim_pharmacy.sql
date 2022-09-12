@@ -31,6 +31,7 @@
 	, ce.Active AS CompanyEmployee_Active
 	, ce.PositionId AS CompanyEmployee_PositionId
 	, ce.CreatedBy AS CompanyEmployee_CreatedBy
+	, COALESCE(p.UpdatedAt, p.CreatedAt) AS Trigger_UpdatedAt
 from [dbo].[Pharmacy] p
 left join [dbo].[CompanyPharmacy] cp on p.id=cp.PharmacyId
 left join [dbo].[CompanyEmployee] ce on ce.id = cp.SaleRepId
