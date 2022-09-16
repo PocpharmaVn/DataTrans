@@ -1,5 +1,6 @@
 WITH tmp AS (
-	SELECT p.Id AS Pharmacy_Id
+	SELECT p.Id AS [Id]
+		, p.Id AS Pharmacy_Id
 		, p.MasterId AS Pharmacy_MasterId
 		, p.Name AS Pharmacy_Name
 		, CAST(p.Active AS INT) AS Pharmacy_Active
@@ -37,7 +38,8 @@ WITH tmp AS (
 	LEFT JOIN [dbo].[CompanyPharmacy] cp ON p.id=cp.PharmacyId
 	LEFT JOIN [dbo].[CompanyEmployee] ce ON ce.id = cp.SaleRepId
 )
-SELECT Pharmacy_Id
+SELECT Id
+	, Pharmacy_Id
 	, Pharmacy_MasterId
 	, Pharmacy_Name
 	, Pharmacy_Active

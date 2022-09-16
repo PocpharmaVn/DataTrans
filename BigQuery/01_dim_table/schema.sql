@@ -85,7 +85,8 @@ CREATE TABLE bq_dataset.dim_city
   
   CREATE TABLE bq_dataset.dim_pharmacy 
   ( 
-	Pharmacy_Id INT64
+	Id INT64
+	, Pharmacy_Id INT64
 	, Pharmacy_MasterId STRING
 	, Pharmacy_Name STRING
 	, Pharmacy_Active INT64
