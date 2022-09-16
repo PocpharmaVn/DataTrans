@@ -1,3 +1,19 @@
+WITH tmp AS (
+	SELECT [Id]
+		  , [Name]
+		  , [RevevantNames]
+		  , [Code]
+		  , [CreatedBy]
+		  , CONVERT(DATETIME, [CreatedAt]) AS [CreatedAt]
+		  , [UpdatedBy]
+		  , CONVERT(DATETIME, [UpdatedAt]) AS [UpdatedAt]
+		  , [CountryId]
+		  , COALESCE([CurrencyId], -100) AS [CurrencyId]
+		  , [CurrencyCode]
+		  , [CultureFormat]
+		  , CONVERT(DATETIME, COALESCE([UpdatedAt], [CreatedAt])) AS [Trigger_UpdatedAt]
+	FROM [dbo].[Country]
+)
 SELECT [Id]
       , [Name]
       , [RevevantNames]
@@ -10,5 +26,5 @@ SELECT [Id]
       , [CurrencyId]
       , [CurrencyCode]
       , [CultureFormat]
-	  , COALESCE([UpdatedAt], [CreatedAt]) AS Trigger_UpdatedAt
-  FROM [dbo].[Country]
+	  , [Trigger_UpdatedAt]
+FROM tmp

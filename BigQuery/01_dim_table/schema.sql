@@ -1,22 +1,22 @@
-CREATE TABLE poc_dwh.dim_country 
+CREATE TABLE bq_dataset.dim_country 
   ( 
 	Id INT64
 	, Name STRING
 	, RevevantNames STRING
 	, Code STRING
 	, CreatedBy INT64
-	, CreatedAt DATE
+	, CreatedAt DATETIME
 	, UpdatedBy INT64
-	, UpdatedAt DATE
+	, UpdatedAt DATETIME
 	, CountryId INT64
 	, CurrencyId INT64
 	, CurrencyCode STRING
 	, CultureFormat STRING
-	, Trigger_UpdatedAt DATE
+	, Trigger_UpdatedAt DATETIME
   )
  PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
   
-CREATE TABLE poc_dwh.dim_city 
+CREATE TABLE bq_dataset.dim_city 
   ( 
 	Id INT64
     , Name STRING
@@ -25,14 +25,14 @@ CREATE TABLE poc_dwh.dim_city
     , StateId INT64
     , RegionId INT64
     , CreatedBy INT64
-    , CreatedAt DATE
+    , CreatedAt DATETIME
     , UpdatedBy INT64
-    , UpdatedAt DATE
-	, Trigger_UpdatedAt DATE
+    , UpdatedAt DATETIME
+	, Trigger_UpdatedAt DATETIME
   )
   PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
   
-  CREATE TABLE poc_dwh.dim_pharmacy_employee 
+  CREATE TABLE bq_dataset.dim_pharmacy_employee 
   ( 
 	Id INT64
     , FirstName STRING
@@ -47,7 +47,7 @@ CREATE TABLE poc_dwh.dim_city
     , UpdatedBy INT64
     , UpdatedAt DATE
     , RegisteredBy INT64
-    , RegisteredDate
+    , RegisteredDate DATE
     , CountryId INT64
     , UseTempPassword INT64
     , IsGeneric INT64
@@ -56,7 +56,7 @@ CREATE TABLE poc_dwh.dim_city
   )
   PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
   
-  CREATE TABLE poc_dwh.dim_pharmacy_address 
+  CREATE TABLE bq_dataset.dim_pharmacy_address 
   ( 
 	Id INT64
     , PharmacyId INT64
@@ -70,54 +70,54 @@ CREATE TABLE poc_dwh.dim_city
     , Detail STRING
     , FullAddress STRING
     , CreatedBy INT64
-    , CreatedAt DATE
+    , CreatedAt DATETIME
     , UpdatedBy INT64
-    , UpdatedAt DATE
+    , UpdatedAt DATETIME
     , WardId INT64
     , Detail1 STRING
     , Detail2 STRING
     , Detail3 STRING
     , Detail4 STRING
     , DetailNoted STRING
-	, Trigger_UpdatedAt DATE
+	, Trigger_UpdatedAt DATETIME
   )
   PARTITION BY DATE_TRUNC(CreatedAt, MONTH);
   
-  CREATE TABLE poc_dwh.dim_pharmacy 
+  CREATE TABLE bq_dataset.dim_pharmacy 
   ( 
 	Pharmacy_Id INT64
-	, Pharmacy_MasterId INT64
+	, Pharmacy_MasterId STRING
 	, Pharmacy_Name STRING
 	, Pharmacy_Active INT64
 	, Pharmacy_CreatedBy INT64
-	, Pharmacy_CreatedAt DATE
+	, Pharmacy_CreatedAt DATETIME
 	, Pharmacy_UpdatedBy INT64
-	, Pharmacy_UpdatedAt DATE
+	, Pharmacy_UpdatedAt DATETIME
 	, Pharmacy_ShortName STRING
 	, Pharmacy_CountryId INT64
 	, Pharmacy_StatusId INT64
 	, CompanyPharmacy_Id INT64
 	, CompanyPharmacy_CompanyId INT64
 	, CompanyPharmacy_PharmacyId INT64
-	, CompanyPharmacy_Code INT64
+	, CompanyPharmacy_Code STRING
 	, CompanyPharmacy_TerritoryId INT64
 	, CompanyPharmacy_Name STRING
 	, CompanyPharmacy_Active INT64
 	, CompanyPharmacy_SaleRepId INT64
-	, CompanyPharmacy_FromDate DATE
+	, CompanyPharmacy_FromDate DATETIME
 	, CompanyPharmacy_CountryId INT64
-	, CompanyPharmacy_CreatedAt DATE
-	, CompanyPharmacy_UpdatedAt DATE
+	, CompanyPharmacy_CreatedAt DATETIME
+	, CompanyPharmacy_UpdatedAt DATETIME
 	, CompanyPharmacy_CoveredType INT64
 	, CompanyEmployee_Id INT64
 	, CompanyEmployee_FirstName STRING
 	, CompanyEmployee_LastName STRING
 	, CompanyEmployee_UserId INT64
 	, CompanyEmployee_CompanyId INT64
-	, CompanyEmployee_Code INT64
+	, CompanyEmployee_Code STRING
 	, CompanyEmployee_Active INT64
 	, CompanyEmployee_PositionId INT64
 	, CompanyEmployee_CreatedBy INT64
-	, Trigger_UpdatedAt DATE
+	, Trigger_UpdatedAt DATETIME
   )
   PARTITION BY DATE_TRUNC(Pharmacy_CreatedAt, MONTH);
